@@ -99,7 +99,7 @@ class Trino(Database):
         cur.execute(query)
         rows = cur.fetchall()
         columns = [desc[0] for desc in cur.description]
-        df = pl.DataFrame(rows, schema=columns, orient="row")
+        df = pl.DataFrame(rows, schema=columns, orient="row", infer_schema_length=10_000)
         return df
 
     def extract_table(self, schema_name: str, table_name: str) -> pl.DataFrame:
