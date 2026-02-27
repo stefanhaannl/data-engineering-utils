@@ -34,7 +34,7 @@ class CsvFile(File):
         )
 
     def extract(self):
-        return pl.read_csv(self.path, separator=self.separator)
+        return pl.read_csv(self.path, separator=self.separator, infer_schema_length=10_000)
 
 
 class ParquetFile(File):
